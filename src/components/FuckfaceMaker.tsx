@@ -135,7 +135,7 @@ export function FuckfaceMaker() {
         FUCKFACE MAKER <span className="rotate-12 hidden md:inline-block">🖕😭</span>
       </h2>
       <p className="text-gray-400 mb-6 font-mono text-sm leading-relaxed">
-        Powered by Hugging Face • Free tier (limited daily uses) • Token required for the site owner only
+        Powered by Hugging Face • Free tier (limited daily uses)
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
