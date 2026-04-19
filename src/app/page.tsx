@@ -6,6 +6,8 @@ import { Copy, Check, Send, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Ticker } from "@/components/Ticker";
 import { MemeGallery } from "@/components/MemeGallery";
+import { FuckfaceMaker } from "@/components/FuckfaceMaker";
+import { GenerationHistory } from "@/components/GenerationHistory";
 
 const CA = "HQM27BReU9a4hKusbd5GEdw1cLbbVvRzKu36RMripump";
 
@@ -126,7 +128,13 @@ export default function Home() {
       {/* 4. MEME GALLERY */}
       <MemeGallery />
 
-      {/* 5. COMMUNITY HUB */}
+      {/* 5. FUCKFACE MAKER & HISTORY */}
+      <section className="w-full max-w-5xl mx-auto px-4 py-24 relative z-10" id="maker">
+        <FuckfaceMaker />
+        <GenerationHistory />
+      </section>
+
+      {/* 6. COMMUNITY HUB */}
       <section className="w-full max-w-4xl mx-auto px-4 py-24">
         <div className="border border-blood/50 bg-black/80 p-8 md:p-12 rounded-3xl relative overflow-hidden text-center shadow-[0_0_50px_rgba(227,6,19,0.15)]">
           <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blood via-toxic to-blood"></div>
