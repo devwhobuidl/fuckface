@@ -4,24 +4,32 @@ import React from "react";
 import { Upload } from "lucide-react";
 import { Button } from "./ui/button";
 
+import Image from "next/image";
+
 const memes = [
   {
     id: 1,
-    title: "Original FUCKFACE",
-    description: "The classic Wojak that started it all.",
-    placeholderColor: "from-red-900/40 to-black",
+    title: "SBF Edition",
+    description: "Sam Bankman-Fried in an FTX shirt.",
+    imagePath: "/memes/media__1776626591431.png",
   },
   {
     id: 2,
-    title: "SBF Edition",
-    description: "Sam Bankman-Fried in an FTX shirt.",
-    placeholderColor: "from-green-900/40 to-black",
+    title: "Bear Edition",
+    description: "The classic fuckface Wojak - bear version.",
+    imagePath: "/memes/media__1776626598795.png",
   },
   {
     id: 3,
-    title: "Sonic Edition",
-    description: "Sonic the Hedgehog crying fuckface version.",
-    placeholderColor: "from-blue-900/40 to-black",
+    title: "Fox Edition",
+    description: "The furry fuckface iteration.",
+    imagePath: "/memes/media__1776626606530.png",
+  },
+  {
+    id: 4,
+    title: "Swaggots Edition",
+    description: "Peak degen aesthetic.",
+    imagePath: "/memes/media__1776626623575.png",
   },
 ];
 
@@ -39,7 +47,7 @@ export function MemeGallery() {
         The finest collection of degens crying while giving the bird.
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {memes.map((meme) => (
           <div
             key={meme.id}
@@ -47,18 +55,20 @@ export function MemeGallery() {
           >
             {/* Image Placeholder */}
             <div
-              className={`aspect-square w-full bg-gradient-to-b ${meme.placeholderColor} flex flex-col items-center justify-center p-6 text-center border-b border-border relative`}
+              className={`aspect-square w-full flex flex-col items-center justify-center bg-black border-b border-border relative overflow-hidden`}
             >
-              <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 mix-blend-overlay"></div>
+              <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 mix-blend-overlay z-10"></div>
               
-              <span className="text-4xl mb-4">🖕😭🖕</span>
-              <p className="font-meme text-xl text-white tracking-wide z-10 opacity-70 group-hover:opacity-100 transition-opacity">
-                [{meme.title.toUpperCase()} IMAGE HERE]
-              </p>
+              <Image 
+                src={meme.imagePath} 
+                alt={meme.title}
+                fill
+                className="object-cover z-0 group-hover:scale-110 transition-transform duration-500"
+              />
               
-              <div className="absolute bottom-4 right-4 flex gap-2">
-                <span className="font-meme text-blood text-2xl rotate-[-15deg] opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100">FUCK</span>
-                <span className="font-meme text-toxic text-2xl rotate-[15deg] opacity-0 group-hover:opacity-100 transition-all duration-300 delay-200">FACE</span>
+              <div className="absolute bottom-4 right-4 flex gap-2 z-20">
+                <span className="font-meme text-blood text-2xl rotate-[-15deg] opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 drop-shadow-[0_0_5px_rgba(0,0,0,1)]">FUCK</span>
+                <span className="font-meme text-toxic text-2xl rotate-[15deg] opacity-0 group-hover:opacity-100 transition-all duration-300 delay-200 drop-shadow-[0_0_5px_rgba(0,0,0,1)]">FACE</span>
               </div>
             </div>
 

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { Copy, Check, Send, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Ticker } from "@/components/Ticker";
@@ -41,16 +42,19 @@ export default function Home() {
       <section className="w-full max-w-5xl mx-auto px-4 flex flex-col items-center justify-center text-center mb-16 relative">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blood/20 rounded-full blur-[120px] -z-10"></div>
         
-        {/* Placeholder for massive Wojak */}
-        <div className="relative w-64 h-64 md:w-80 md:h-80 mb-8 flex items-center justify-center rounded-2xl border-2 border-blood bg-black shadow-[0_0_50px_rgba(227,6,19,0.4)] overflow-hidden group">
-           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30"></div>
-           <div className="text-center z-10 px-4">
-              <span className="text-7xl block mb-2 group-hover:scale-125 transition-transform">🖕😭🖕</span>
-              <span className="font-meme text-2xl text-white opacity-50">[INSERT FUCKFACE WOJAK]</span>
-           </div>
+        {/* Hero image for massive Wojak */}
+        <div className="relative w-64 h-64 md:w-[400px] md:h-[400px] mb-8 flex items-center justify-center rounded-2xl border-2 border-blood bg-black shadow-[0_0_50px_rgba(227,6,19,0.4)] overflow-hidden group">
+           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30 z-10"></div>
            
-           <div className="absolute left-2 top-1/2 -translate-y-1/2 font-meme text-blood text-4xl -rotate-90 origin-center drop-shadow-[0_0_10px_rgba(255,0,0,1)]">FUCK</div>
-           <div className="absolute right-2 top-1/2 -translate-y-1/2 font-meme text-toxic text-4xl rotate-90 origin-center drop-shadow-[0_0_10px_rgba(0,255,0,1)]">FACE</div>
+           <Image 
+              src="/memes/media__1776626577998.png" 
+              alt="FUCKFACE Wojak"
+              fill
+              className="object-contain z-0 p-4 drop-shadow-[0_0_20px_rgba(255,255,255,0.2)] group-hover:scale-105 transition-transform duration-500"
+           />
+           
+           <div className="absolute left-2 top-1/2 -translate-y-1/2 font-meme text-blood text-4xl -rotate-90 origin-center drop-shadow-[0_0_10px_rgba(255,0,0,1)] z-20">FUCK</div>
+           <div className="absolute right-2 top-1/2 -translate-y-1/2 font-meme text-toxic text-4xl rotate-90 origin-center drop-shadow-[0_0_10px_rgba(0,255,0,1)] z-20">FACE</div>
         </div>
 
         <h1 className="text-7xl md:text-9xl font-meme text-white tracking-widest drop-shadow-[0_4px_4px_rgba(227,6,19,0.8)] mb-2">
@@ -76,7 +80,7 @@ export default function Home() {
 
         {/* BUY Button */}
         <a 
-          href={`https://pump.fun/${CA}`} 
+          href="https://pump.fun/coin/HQm27BReU9a4hKusbd5GEdw1cLbbVVrZku36RMripump" 
           target="_blank" 
           rel="noopener noreferrer"
         >
@@ -130,8 +134,8 @@ export default function Home() {
           <h2 className="text-4xl md:text-6xl font-meme mb-4 text-white">JOIN THE MOB</h2>
           <p className="text-xl text-gray-400 mb-8">We are growing. We are crying. We are giving the middle finger.</p>
           
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-12">
-            <a href="#" className="w-full md:w-auto">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-12 relative z-10">
+            <a href="https://x.com/i/communities/2029868045405954384" target="_blank" rel="noopener noreferrer" className="w-full md:w-auto">
               <Button className="w-full bg-[#1DA1F2] hover:bg-[#1a8cd8] text-white font-bold text-lg py-6 px-8 rounded-xl flex items-center justify-center gap-3 hover:scale-105 transition-transform">
                 <span className="text-2xl h-6 leading-[24px]">𝕏</span> COMMUNITY
               </Button>
@@ -141,7 +145,7 @@ export default function Home() {
                 <Send className="w-6 h-6" /> TELEGRAM
               </Button>
             </a>
-            <a href={`https://pump.fun/${CA}`} target="_blank" rel="noopener noreferrer" className="w-full md:w-auto">
+            <a href="https://pump.fun/coin/HQm27BReU9a4hKusbd5GEdw1cLbbVVrZku36RMripump" target="_blank" rel="noopener noreferrer" className="w-full md:w-auto">
               <Button className="w-full bg-toxic text-black hover:bg-green-400 font-bold text-lg py-6 px-8 rounded-xl flex items-center justify-center gap-3 hover:scale-105 transition-transform shadow-[0_0_15px_rgba(0,255,0,0.4)]">
                 PUMP.FUN <ArrowRight className="w-5 h-5" />
               </Button>
