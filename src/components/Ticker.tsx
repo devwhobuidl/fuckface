@@ -4,31 +4,44 @@ import React, { useEffect, useState } from "react";
 
 export function Ticker() {
   const [stats, setStats] = useState({
-    mcap: "$6.9M",
-    liquidity: "$420K",
-    holders: "69,420",
-    volume: "$1.2M",
+    mcap: "LOADING...",
+    liquidity: "LOCKED",
+    holders: "GROWING...",
+    volume: "LOADING...",
   });
 
-  useEffect(() => {
-    // Attempt to load from localStorage if admin updated it
-    const storedStats = localStorage.getItem("fuckface_stats");
-    if (storedStats) {
-      try {
-        setStats(JSON.parse(storedStats));
-      } catch (e) {
-        console.error("Failed to parse stored stats", e);
-      }
-    }
+  const formatCurrency = (val: number) => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      maximumFractionDigits: 0,
+    }).format(val);
+  };
 
-    // Also listen for storage event in case it's updated in another tab or exactly now
-    const handleStorageChange = (e: StorageEvent) => {
-      if (e.key === "fuckface_stats" && e.newValue) {
-        setStats(JSON.parse(e.newValue));
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("https://api.dexscreener.com/latest/dex/tokens/HQM27BReU9a4hKusbd5GEdw1cLbbVVrZku36RMripump");
+        const data = await res.json();
+        
+        if (data.pairs && data.pairs.length > 0) {
+          const pair = data.pairs[0];
+          
+          setStats((prev) => ({
+            ...prev,
+            mcap: pair.marketCap ? formatCurrency(pair.marketCap) : prev.mcap,
+            volume: pair.volume?.h24 ? formatCurrency(pair.volume.h24) : prev.volume,
+            liquidity: pair.liquidity?.usd ? formatCurrency(pair.liquidity.usd) : prev.liquidity,
+          }));
+        }
+      } catch (e) {
+        console.error("Failed to fetch dexscreener data", e);
       }
     };
-    window.addEventListener("storage", handleStorageChange);
-    return () => window.removeEventListener("storage", handleStorageChange);
+
+    fetchData();
+    const interval = setInterval(fetchData, 10000); // Poll every 10s
+    return () => clearInterval(interval);
   }, []);
 
   const items = [
