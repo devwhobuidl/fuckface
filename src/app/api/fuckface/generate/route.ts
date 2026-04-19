@@ -16,7 +16,7 @@ const HOUR_MS = 60 * 60 * 1000;
 export async function POST(req: NextRequest) {
   try {
     // 1. IP Rate Limiting Logic
-    const ip = req.headers.get("x-forwarded-for") || req.ip || "127.0.0.1";
+    const ip = req.headers.get("x-forwarded-for")?.split(',')[0] || req.headers.get("x-real-ip") || "127.0.0.1";
     const now = Date.now();
     
     let limitData = RATE_LIMIT_MAP.get(ip);
